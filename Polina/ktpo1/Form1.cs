@@ -23,31 +23,7 @@ namespace ktpo1
         }
         private void sort(int c,int k,string[] sNums)
         {
-            int temp;
-            int[] nums = new int[c]; // объявляем новый массив с количеством элементов = c.
-
-            for (int i = 0; i < c; i++)
-                nums[i] = int.Parse(sNums[i]);
-            for (int i = 1; i <= c; i = i + 2)
-            {
-                if (nums[i] > 0)
-                {
-                    nums[i] = nums[i] + k;
-                }
-            }
-
-            for (int i = 0; i < c / 2; i++)
-            {
-                temp = nums[i * 2 + 1];
-                nums[i * 2 + 1] = nums[i * 2];
-                nums[i * 2] = temp;
-            }
-            for (int i = 0; i < nums.Length; i++)
-            {
-                textBox3.Text += nums[i].ToString() + "  ";
-
-            }
-
+           
             FileStream fs = new FileStream("output.txt", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             for (int i = 0; i < c; i++)
@@ -61,34 +37,7 @@ namespace ktpo1
           
             try
             {
-                textBox3.Clear();
-                int c = int.Parse(textBox1.Text); // Парсим значение из текстового поля textBox1.
-                int k = int.Parse(textBox4.Text);
-                string[] sNums = textBox2.Text.Split(' '); // Разбиваем текст из текстового поля textBox2, на массив строк, разделителем является пробел.
-                if (c > sNums.Length)
-                {
-                    MessageBox.Show("ERROR 01. Длина массива не соответствует введенному! Дополните массив до нужного размера");
-                    return;
-                }
-                if (c <= 1)
-                {
-                    MessageBox.Show("ERROR 02. Размер массива должен быть больше 1");
-                    textBox2.Clear();
-                    return;
-                }
-                if (c < sNums.Length)
-                {
-                    MessageBox.Show("ERROR 03. Длина массива не соответствует введенному! Вы ввели большое количество символов");
-                    return;
-                }
-                if (c % 2 != 0)
-                {
-                    MessageBox.Show("ERROR 04. Введите четное число в поле размерность массива");
-                    textBox1.Clear();
-                    textBox2.Clear();
-                    return;
-
-                }
+               
                 if (textBox4.Text == null)
                 {
                     MessageBox.Show("ERROR 05. Введите произвольное число К");
